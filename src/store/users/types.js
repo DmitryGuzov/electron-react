@@ -1,0 +1,2 @@
+export const GET_CUSTOMERS = 'GET_CUSTOMERS';
+export const SET_USERS_STATUS = 'SET_USERS_STATUS';

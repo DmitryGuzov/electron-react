@@ -1,0 +1,40 @@
+.sidebar {
+  width: 60px;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #21252b;
+}
+
+.sidebar > .list {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.sidebar > .list:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar > .list > .item {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: #171a1e;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 300ms ease-out;
+}
+
+.sidebar > .list > .item.active {
+  background-color: #121a23;
+}
+
+.sidebar > .list > .item:hover {
+  background-color: #121518;
+  cursor: pointer;
+}

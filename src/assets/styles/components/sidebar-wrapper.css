@@ -1,0 +1,9 @@
+.sidebar-wrapper {
+  display: flex;
+}
+
+.sidebar-wrapper > .inner {
+  width: 100%;
+  height: auto;
+  overflow-x: auto;
+}

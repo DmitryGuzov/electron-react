@@ -16,7 +16,8 @@ import {
   Link,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+// import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { SignInRoute } from '../config/routes';
 
@@ -75,11 +76,16 @@ function SignUpForm() {
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
+                    p={3}
                     onClick={() =>
                       setShowPassword((showPassword) => !showPassword)
                     }
                   >
-                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    {showPassword ? (
+                      <AiFillEye fontSize={'29px'} />
+                    ) : (
+                      <AiFillEyeInvisible fontSize={'29px'} />
+                    )}
                   </Button>
                 </InputRightElement>
               </InputGroup>
@@ -100,7 +106,10 @@ function SignUpForm() {
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
-                Already a user? <Link color={'blue.400'}>Login</Link>
+                Already a user?{' '}
+                <Link color={'blue.400'} onClick={handleSubmit}>
+                  Login
+                </Link>
               </Text>
             </Stack>
           </Stack>

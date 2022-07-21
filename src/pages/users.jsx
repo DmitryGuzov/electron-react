@@ -100,6 +100,7 @@ const UsersPage = (props) => {
                   {loading && (
                     <Box
                       display={'flex'}
+                      height={'60px'}
                       width={'100%'}
                       justifyContent={'center'}
                       alignItems={'center'}

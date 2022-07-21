@@ -4,6 +4,7 @@
 
 .sidebar-wrapper > .inner {
   width: 100%;
-  height: auto;
+  height: 100vh;
   overflow-x: auto;
+  overflow-y: auto;
 }

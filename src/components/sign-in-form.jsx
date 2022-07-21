@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Flex,
   Box,
@@ -12,14 +12,25 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  InputGroup,
+  InputRightElement,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { HomeRoute } from '../config/routes';
+import { ForgotPasswordRoute, HomeRoute, SignUpRoute } from '../config/routes';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
 function SignInForm() {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = () => {
     navigate(HomeRoute);
+  };
+
+  const handleForgotPasswordPage = () => {
+    navigate(ForgotPasswordRoute);
+  };
+  const handleSignUpPage = () => {
+    navigate(SignUpRoute);
   };
   return (
     <Flex
@@ -48,7 +59,24 @@ function SignInForm() {
             </FormControl>
             <FormControl id='password'>
               <FormLabel>Password</FormLabel>
-              <Input type='password' />
+              <InputGroup>
+                <Input type={showPassword ? 'text' : 'password'} />
+                <InputRightElement h={'full'}>
+                  <Button
+                    variant={'ghost'}
+                    p={3}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }
+                  >
+                    {showPassword ? (
+                      <AiFillEye fontSize={'29px'} />
+                    ) : (
+                      <AiFillEyeInvisible fontSize={'29px'} />
+                    )}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
             </FormControl>
             <Stack spacing={10}>
               <Stack
@@ -56,8 +84,12 @@ function SignInForm() {
                 align={'start'}
                 justify={'space-between'}
               >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={'blue.400'}>Forgot password?</Link>
+                <Link color={'blue.400'} onClick={handleSignUpPage}>
+                  Not registered?
+                </Link>
+                <Link color={'blue.400'} onClick={handleForgotPasswordPage}>
+                  Forgot password?
+                </Link>
               </Stack>
               <Button
                 bg={'blue.400'}

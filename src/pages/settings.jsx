@@ -8,9 +8,7 @@ import SidebarWrapper from '../components/sidebar-wrapper';
 const SettingsPage = (props) => {
   return (
     <SidebarWrapper>
-      <div className='App'>
-        <h2>Settings page</h2>
-      </div>
+      <h2>Settings page</h2>
     </SidebarWrapper>
   );
 };

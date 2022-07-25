@@ -1,20 +1,25 @@
 import React from 'react';
 import {
   Box,
+  chakra,
   Button,
   Tabs,
   TabList,
   Tab,
   TabPanels,
   TabPanel,
+  Container,
+  Flex,
 } from '@chakra-ui/react';
+import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { MdLocalShipping } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import EventsTab from '../components/user/events-tab';
 import CarsTab from '../components/user/cars-tab';
 import ServicesTab from '../components/user/services-tab';
 import UserInfoTab from '../components/user/user-info-tab';
 
-function UserContainer() {
+function CarContainer() {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -49,4 +54,4 @@ function UserContainer() {
   );
 }
 
-export default UserContainer;
+export default CarContainer;

@@ -2,12 +2,14 @@ import React from 'react';
 import '../app/App.css';
 import SidebarWrapper from '../components/sidebar-wrapper';
 
-const HomePage = (props) => {
+import ServicesContainer from '../containers/services';
+
+const ServicesPage = () => {
   return (
     <SidebarWrapper>
-      <h2>Home page</h2>
+      <ServicesContainer />
     </SidebarWrapper>
   );
 };
 
-export default HomePage;
+export default ServicesPage;

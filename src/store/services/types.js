@@ -1,0 +1,3 @@
+export const SET_SERVICES_STATUS = 'SET_SERVICES_STATUS';
+export const GET_SERVICES = 'GET_SERVICES';
+export const GET_SERVICE = 'GET_SERVICE';

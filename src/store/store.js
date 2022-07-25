@@ -1,6 +1,7 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
-
+import carsReducer from './cars/reducer';
+import servicesReducer from './services/reducer';
 import usersReducer from './users/reducer';
 // import authReducer from './auth/reducer';
 // import ordersReducer from './orders/reducer';
@@ -12,8 +13,10 @@ import usersReducer from './users/reducer';
 // import productReducer from './product/reducer';
 
 export const rootReducer = combineReducers({
-  auth: {},
+  authStore: {},
   usersStore: usersReducer,
+  carsStore: carsReducer,
+  servicesStore: servicesReducer,
   //   authStore: authReducer,
   //   ordersStore: ordersReducer,
   //   orderStore: orderReducer,

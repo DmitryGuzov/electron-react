@@ -5,9 +5,7 @@ import SidebarWrapper from '../components/sidebar-wrapper';
 const UserPage = (props) => {
   return (
     <SidebarWrapper>
-      <div className='user-page'>
-        <UserContainer />
-      </div>
+      <UserContainer />
     </SidebarWrapper>
   );
 };

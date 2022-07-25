@@ -4,9 +4,13 @@ import { FiUsers } from 'react-icons/fi';
 import { BiHomeAlt } from 'react-icons/bi';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { MdOutlineLogout } from 'react-icons/md';
+import { IoCarSport } from 'react-icons/io5';
+import { MdMiscellaneousServices } from 'react-icons/md';
 import Tooltip from './tooltip';
 import {
+  CarsRoute,
   HomeRoute,
+  ServicesRoute,
   SettingsRoute,
   SignInRoute,
   UsersRoute,
@@ -17,6 +21,8 @@ import { useCurrentLocation } from '../hooks/useCurrentLocation';
 const list = [
   { title: 'Головна', icon: BiHomeAlt, path: HomeRoute },
   { title: 'Користувачі', icon: FiUsers, path: UsersRoute },
+  { title: 'Авто', icon: IoCarSport, path: CarsRoute },
+  { title: 'Сервіси', icon: MdMiscellaneousServices, path: ServicesRoute },
   { title: 'Налаштування', icon: IoSettingsOutline, path: SettingsRoute },
   { title: 'Вихід', icon: MdOutlineLogout, path: SignInRoute },
 ];

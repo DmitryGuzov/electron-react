@@ -1,13 +1,13 @@
 import React from 'react';
-import '../app/App.css';
 import SidebarWrapper from '../components/sidebar-wrapper';
+import CarContainer from '../containers/car';
 
-const HomePage = (props) => {
+const CarPage = (props) => {
   return (
     <SidebarWrapper>
-      <h2>Home page</h2>
+      <CarContainer />
     </SidebarWrapper>
   );
 };
 
-export default HomePage;
+export default CarPage;

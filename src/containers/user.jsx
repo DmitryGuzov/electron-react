@@ -13,6 +13,7 @@ import EventsTab from '../components/user/events-tab';
 import CarsTab from '../components/user/cars-tab';
 import ServicesTab from '../components/user/services-tab';
 import UserInfoTab from '../components/user/user-info-tab';
+import Navbar from '../components/navbar';
 
 function UserContainer() {
   const navigate = useNavigate();
@@ -23,13 +24,14 @@ function UserContainer() {
   return (
     <Box padding={'10px'}>
       <Tabs variant='enclosed' colorScheme='green'>
-        <TabList>
-          <Button onClick={handleBack}>Go back</Button>
-          <Tab>User Info</Tab>
-          <Tab>Cars</Tab>
-          <Tab>Services</Tab>
-          <Tab>Events</Tab>
-        </TabList>
+        <Navbar>
+          <TabList>
+            <Tab>User Info</Tab>
+            <Tab>Cars</Tab>
+            <Tab>Services</Tab>
+            <Tab>Events</Tab>
+          </TabList>
+        </Navbar>
         <TabPanels>
           <TabPanel>
             <UserInfoTab />

@@ -8,7 +8,7 @@ const carsReducer = (state = initialState, action) => {
     case SET_CARS_STATUS:
       return { ...state, status: action.payload };
     case GET_CAR:
-      return { ...state, car: action.car };
+      return { ...state, car: action.payload.car };
     default:
       return state;
   }

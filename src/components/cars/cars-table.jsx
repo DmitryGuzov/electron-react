@@ -14,12 +14,16 @@ import {
 
 import { useNavigate } from 'react-router-dom';
 import { CarRoute } from '../../config/routes';
+import { useDispatch } from 'react-redux';
+import { getCarAction } from '../../store/cars/actions';
 
 const CarsTable = (props) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleNavigate = (carId) => {
-    navigate(CarRoute.format(carId));
+  const handleNavigate = (car) => {
+    dispatch(getCarAction({ car: car }));
+    navigate(CarRoute.format(car.id));
   };
 
   return (
@@ -29,6 +33,7 @@ const CarsTable = (props) => {
           <Th>Id</Th>
           <Th>Brand</Th>
           <Th>Model</Th>
+          <Th textAlign={'center'}>Number</Th>
           <Th textAlign={'center'}>Price</Th>
           <Th textAlign={'center'}>Created at</Th>
         </Tr>
@@ -41,7 +46,7 @@ const CarsTable = (props) => {
               <Tr
                 key={car.id}
                 onClick={() => {
-                  handleNavigate(car.id);
+                  handleNavigate(car);
                 }}
                 _hover={{
                   backgroundColor: '#c2c2c2',
@@ -50,6 +55,7 @@ const CarsTable = (props) => {
                 <Td>{car.id}</Td>
                 <Td>{car.brand}</Td>
                 <Td>{car.model}</Td>
+                <Td textAlign={'center'}>{car.number ?? ' - '}</Td>
                 <Td textAlign={'center'}>{car.price}</Td>
                 <Td textAlign={'center'}>{car.createdAt}</Td>
               </Tr>

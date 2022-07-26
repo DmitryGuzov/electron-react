@@ -1,7 +1,7 @@
 import CarsService from '../../../services/cars';
 import { getCarsAction, setCarsStatus } from '../actions';
 
-const getServicesThunk = () => {
+const getCarsThunk = () => {
   return async (dispatch, getState) => {
     try {
       dispatch(setCarsStatus('running'));
@@ -27,4 +27,4 @@ const getServicesThunk = () => {
   };
 };
 
-export default getServicesThunk;
+export default getCarsThunk;

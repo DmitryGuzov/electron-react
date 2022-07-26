@@ -1,12 +1,52 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Tray, Menu } = require('electron');
+require('@electron/remote/main').initialize();
 
 const path = require('path');
 const isDev = require('electron-is-dev');
 
-require('@electron/remote/main').initialize();
+const iconPath = path.join(__dirname, 'favicon.ico');
+const TrayMenu = Menu;
+let tray = null;
+let mainWindow = null;
+let isQuiting;
+
+function createTray() {
+  tray = new Tray(iconPath);
+
+  let template = [
+    {
+      label: 'Settings',
+      click: function () {
+        mainWindow.show();
+      },
+    },
+    {
+      label: 'Quit',
+      click: function () {
+        isQuiting = true;
+        app.quit();
+      },
+    },
+  ];
+  tray.setToolTip('JustA');
+  const ctxMenu = TrayMenu.buildFromTemplate(template);
+  tray.setContextMenu(ctxMenu);
+}
+
+function mainFunction() {
+  createTray();
+  createWindow();
+  mainWindow.on('close', function (event) {
+    if (!isQuiting) {
+      event.preventDefault();
+      mainWindow.hide();
+      event.returnValue = false;
+    }
+  });
+}
 
 function createWindow() {
-  const window = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     minHeight: 600,
@@ -16,15 +56,18 @@ function createWindow() {
       enableRemoteModule: true,
     },
   });
-
-  window.loadURL(
+  mainWindow.loadURL(
     isDev
       ? 'http://localhost:3000'
       : `file://${path.join(__dirname, '../build/index.html')}`
   );
 }
 
-app.on('ready', createWindow);
+app.on('ready', mainFunction);
+
+app.on('before-quit', function () {
+  isQuiting = true;
+});
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
@@ -33,7 +76,10 @@ app.on('window-all-closed', function () {
 });
 
 app.on('activate', function () {
-  if (BrowserWindow.getAllWindows().length === 0) {
+  if (mainWindow === null) {
     createWindow();
   }
+  // if (BrowserWindow.getAllWindows().length === 0) {
+  //   createWindow();
+  // }
 });

@@ -19,7 +19,7 @@ function CarContainer() {
     <Box padding={'10px'}>
       <Navbar />
       {loading && <>Loading...</>}
-      {car && <CarDetails car={car} />}
+      {car && !loading && <CarDetails car={car} />}
     </Box>
   );
 }

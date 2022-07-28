@@ -1,12 +1,12 @@
 import CarsService from '../../../services/cars';
 import { getCarsAction, setCarsStatus } from '../actions';
 
-const getCarsThunk = () => {
+const getCarsThunk = (page, limit, search, filters) => {
   return async (dispatch, getState) => {
     try {
       dispatch(setCarsStatus('running'));
-
-      const response = await CarsService.getCars();
+      const skip = (page - 1) * limit;
+      const response = await CarsService.getCars(skip, limit, search, filters);
       await new Promise((res) => {
         setTimeout(() => {
           res();
@@ -17,7 +17,7 @@ const getCarsThunk = () => {
         dispatch(
           getCarsAction({
             cars: response.data.cars,
-            // total: response.data.count,
+            total: response.data.total,
           })
         );
       }

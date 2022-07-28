@@ -1,17 +1,18 @@
 import ServicesService from '../../../services/services';
-import {
-  getServicesAction,
-  getServiceAction,
-  setServicesStatus,
-} from '../actions';
+import { getServicesAction, setServicesStatus } from '../actions';
 
-const getServicesThunk = () => {
+const getServicesThunk = (page, limit, search, filters) => {
   return async (dispatch, getState) => {
     try {
       dispatch(setServicesStatus('running'));
 
-      const response = await ServicesService.getServices();
-      console.log(response);
+      const skip = (page - 1) * limit;
+      const response = await ServicesService.getServices(
+        skip,
+        limit,
+        search,
+        filters
+      );
       await new Promise((res) => {
         setTimeout(() => {
           res();
@@ -19,10 +20,11 @@ const getServicesThunk = () => {
       });
       if (response.status === 200 || response.status === 201) {
         dispatch(setServicesStatus('success'));
+        console.log('response: ', response);
         dispatch(
           getServicesAction({
             services: response.data.services,
-            // total: response.data.count,
+            total: response.data.total,
           })
         );
       }

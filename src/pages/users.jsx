@@ -4,7 +4,7 @@ import SidebarWrapper from '../components/sidebar-wrapper';
 
 import UsersContainer from '../containers/users';
 
-const UsersPage = () => {
+const UsersPage = (props) => {
   return (
     <SidebarWrapper>
       <UsersContainer />

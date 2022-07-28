@@ -11,6 +11,7 @@ export const ServiceRoute = {
   template: '/services/:serviceId',
   format: (id) => `/services/${id}`,
 };
+export const AddServiceRoute = '/services/add';
 export const UserRoute = {
   template: '/users/:userId',
   format: (id) => `/users/${id}`,

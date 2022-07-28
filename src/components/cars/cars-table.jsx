@@ -10,6 +10,7 @@ import {
   Tbody,
   Tfoot,
   Spinner,
+  Avatar,
 } from '@chakra-ui/react';
 
 import { useNavigate } from 'react-router-dom';
@@ -27,60 +28,76 @@ const CarsTable = (props) => {
   };
 
   return (
-    <Table size='sm'>
-      <Thead>
-        <Tr>
-          <Th>Id</Th>
-          <Th>Brand</Th>
-          <Th>Model</Th>
-          <Th textAlign={'center'}>Number</Th>
-          <Th textAlign={'center'}>Price</Th>
-          <Th textAlign={'center'}>Created at</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {!props.loading &&
-          props.cars.length > 0 &&
-          props.cars.map((car) => {
-            return (
-              <Tr
-                key={car.id}
-                onClick={() => {
-                  handleNavigate(car);
-                }}
-                _hover={{
-                  backgroundColor: '#c2c2c2',
-                }}
-              >
-                <Td>{car.id}</Td>
-                <Td>{car.brand}</Td>
-                <Td>{car.model}</Td>
-                <Td textAlign={'center'}>{car.number ?? ' - '}</Td>
-                <Td textAlign={'center'}>{car.price}</Td>
-                <Td textAlign={'center'}>{car.createdAt}</Td>
-              </Tr>
-            );
-          })}
-      </Tbody>
-      <Tfoot>
-        <Tr>
-          <Th colSpan={14} textAlign='center'>
-            {!props.cars || (props.cars?.length === 0 && 'Не знайдено')}
-            {props.loading && (
-              <Box
-                display={'flex'}
-                height={'60px'}
-                width={'100%'}
-                justifyContent={'center'}
-                alignItems={'center'}
-              >
-                <Spinner color='pink.300' />
-              </Box>
-            )}
-          </Th>
-        </Tr>
-      </Tfoot>
-    </Table>
+    <TableContainer>
+      <Table size='sm'>
+        <Thead>
+          <Tr>
+            <Th>Avatar</Th>
+            <Th>Id</Th>
+            <Th>Brand</Th>
+            <Th>Model</Th>
+            <Th textAlign={'center'}>Number</Th>
+            <Th textAlign={'center'}>Price</Th>
+            <Th textAlign={'center'}>Created at</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {!props.loading &&
+            props.cars.length > 0 &&
+            props.cars.map((car) => {
+              return (
+                <Tr
+                  key={car.id}
+                  onClick={() => {
+                    handleNavigate(car);
+                  }}
+                  _hover={{
+                    backgroundColor: '#c2c2c2',
+                  }}
+                >
+                  <Td>
+                    <Avatar
+                      size='sm'
+                      borderRadius={'2px'}
+                      width='50px'
+                      loading='lazy'
+                      src={
+                        car.img.length > 0
+                          ? car.img
+                          : 'https://bit.ly/sage-adebayo'
+                      }
+                    ></Avatar>
+                  </Td>
+                  <Td>{car.id}</Td>
+                  <Td>{car.brand}</Td>
+                  <Td>{car.model}</Td>
+                  <Td textAlign={'center'}>{car.number ?? ' - '}</Td>
+                  <Td textAlign={'center'}>{car.price}</Td>
+                  <Td textAlign={'center'}>{car.createdAt}</Td>
+                </Tr>
+              );
+            })}
+        </Tbody>
+        <Tfoot>
+          <Tr>
+            <Th colSpan={14} textAlign='center'>
+              {!props.cars || (props.cars?.length === 0 && 'Не знайдено')}
+              {props.loading && (
+                <Box
+                  display={'flex'}
+                  height={'60px'}
+                  width={'100%'}
+                  justifyContent={'center'}
+                  alignItems={'center'}
+                >
+                  <Spinner color='pink.300' />
+                </Box>
+              )}
+            </Th>
+          </Tr>
+        </Tfoot>
+      </Table>
+    </TableContainer>
   );
 };
 

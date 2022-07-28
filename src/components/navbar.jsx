@@ -12,7 +12,9 @@ const Navbar = (props) => {
     <Box padding={2} borderRadius={5} backgroundColor={'#21252b'}>
       <Wrap>
         <WrapItem>
-          <Button onClick={handleBack}>Back</Button>
+          <Button onClick={handleBack} size={'sm'}>
+            Back
+          </Button>
         </WrapItem>
         {props.children}
       </Wrap>

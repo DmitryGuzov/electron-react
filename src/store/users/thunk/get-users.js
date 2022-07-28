@@ -1,16 +1,16 @@
 import UsersService from '../../../services/users';
-import { getUsersAction, setUsersStatus } from '../actions';
+import { getUsersAction, setUsersPageAction, setUsersStatus } from '../actions';
 
-const getUsersThunk = (skip, limit, sort, search) => {
+const getUsersThunk = (page, limit, search, filters) => {
   return async (dispatch, getState) => {
     try {
       dispatch(setUsersStatus('running'));
-
+      const skip = (page - 1) * limit;
       const response = await UsersService.getCustomers(
         skip,
         limit,
-        sort,
-        search
+        search,
+        filters
       );
       await new Promise((res) => {
         setTimeout(() => {
@@ -19,12 +19,16 @@ const getUsersThunk = (skip, limit, sort, search) => {
       });
       if (response.status === 200 || response.status === 201) {
         dispatch(setUsersStatus('success'));
-        dispatch(
-          getUsersAction({
-            users: response.data,
-            // total: response.data.count,
-          })
-        );
+        if (page > Math.ceil(response.data.total / limit)) {
+          dispatch(setUsersPageAction({ page: 1 }));
+        } else {
+          dispatch(
+            getUsersAction({
+              users: response.data.users,
+              total: response.data.total,
+            })
+          );
+        }
       }
     } catch (error) {
       dispatch(setUsersStatus('error'));

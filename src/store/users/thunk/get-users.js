@@ -1,5 +1,5 @@
 import UsersService from '../../../services/users';
-import { getUsersAction, setUsersPageAction, setUsersStatus } from '../actions';
+import { getUsersAction, setUsersStatus } from '../actions';
 
 const getUsersThunk = (page, limit, search, filters) => {
   return async (dispatch, getState) => {
@@ -19,16 +19,12 @@ const getUsersThunk = (page, limit, search, filters) => {
       });
       if (response.status === 200 || response.status === 201) {
         dispatch(setUsersStatus('success'));
-        if (page > Math.ceil(response.data.total / limit)) {
-          dispatch(setUsersPageAction({ page: 1 }));
-        } else {
-          dispatch(
-            getUsersAction({
-              users: response.data.users,
-              total: response.data.total,
-            })
-          );
-        }
+        dispatch(
+          getUsersAction({
+            users: response.data.users,
+            total: response.data.total,
+          })
+        );
       }
     } catch (error) {
       dispatch(setUsersStatus('error'));

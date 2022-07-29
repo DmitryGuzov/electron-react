@@ -19,3 +19,5 @@ export const UserRoute = {
 export const SettingsRoute = '/settings';
 export const HomeRoute = '/';
 export const ForgotPasswordRoute = '/forgot-password';
+export const EventsRoute = '/events';
+export const InvoicesRoute = '/invoices';

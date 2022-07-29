@@ -23,13 +23,13 @@ import {
   TabPanels,
   Wrap,
   WrapItem,
+  Avatar,
 } from '@chakra-ui/react';
 
-import { MdLocalShipping } from 'react-icons/md';
+import { BsImage } from 'react-icons/bs';
 import CarCharacteristics from './car-characteristics';
 
 const CarDetails = ({ car }) => {
-  console.log(car);
   return (
     <Container maxW={'7xl'}>
       <SimpleGrid
@@ -38,16 +38,17 @@ const CarDetails = ({ car }) => {
         py={{ base: 18, md: 24 }}
       >
         <Flex>
-          <Image
-            rounded={'md'}
+          <Avatar
+            // rounded={'md'}
+            borderRadius={'5px'}
             alt={'product image'}
-            src={
-              'https://images.unsplash.com/photo-1596516109370-29001ec8ec36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODE1MDl8MHwxfGFsbHx8fHx8fHx8fDE2Mzg5MzY2MzE&ixlib=rb-1.2.1&q=80&w=1080'
-            }
+            src={car?.img}
             fit={'cover'}
             align={'center'}
             w={'100%'}
-            h={{ base: '100%', sm: '400px', lg: '500px' }}
+            icon={<BsImage fontSize='40px' />}
+            loading='lazy'
+            h={{ base: '100%', sm: '300px', lg: '400px' }}
           />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
@@ -78,11 +79,6 @@ const CarDetails = ({ car }) => {
             }
           >
             <CarCharacteristics characteristics={car} />
-          </Stack>
-
-          <Stack direction='row' alignItems='center' justifyContent={'center'}>
-            <MdLocalShipping />
-            <Text>2-3 business days delivery</Text>
           </Stack>
         </Stack>
       </SimpleGrid>

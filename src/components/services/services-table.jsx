@@ -10,6 +10,7 @@ import {
   Tbody,
   Tfoot,
   Spinner,
+  Badge,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { ServiceRoute } from '../../config/routes';
@@ -26,9 +27,12 @@ const ServicesTable = (props) => {
       <Table size='sm'>
         <Thead>
           <Tr>
-            <Th>Id</Th>
             <Th>Title</Th>
+            <Th textAlign={'center'}>Location</Th>
             <Th textAlign={'center'}>Price</Th>
+            <Th textAlign={'center'}>Reminder</Th>
+            <Th textAlign={'center'}>Reminder finished</Th>
+            <Th textAlign={'center'}>Remind at</Th>
             <Th textAlign={'center'}>Created at</Th>
           </Tr>
         </Thead>
@@ -46,9 +50,35 @@ const ServicesTable = (props) => {
                     backgroundColor: '#c2c2c2',
                   }}
                 >
-                  <Td>{service.id}</Td>
                   <Td>{service.title}</Td>
+
+                  {service.location ? (
+                    <Td>{service.location}</Td>
+                  ) : (
+                    <Td textAlign={'center'}> - </Td>
+                  )}
                   <Td textAlign={'center'}>{service.price}</Td>
+                  <Td textAlign={'center'}>
+                    {service.isReminder ? (
+                      <Badge colorScheme={'green'}>Yes</Badge>
+                    ) : (
+                      <Badge colorScheme={'pink'}>No</Badge>
+                    )}
+                  </Td>
+                  <Td textAlign={'center'}>
+                    {service.isReminder ? (
+                      service.isReminderFinished ? (
+                        <Badge colorScheme={'green'}>Yes</Badge>
+                      ) : (
+                        <Badge colorScheme={'pink'}>No</Badge>
+                      )
+                    ) : (
+                      ' - '
+                    )}
+                  </Td>
+                  <Td textAlign={'center'}>
+                    {service.isReminder ? service.remindAt ?? ' - ' : ' - '}
+                  </Td>
                   <Td textAlign={'center'}>{service.createdAt}</Td>
                 </Tr>
               );

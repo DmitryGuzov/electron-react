@@ -2,6 +2,7 @@ import {
   GET_CUSTOMERS,
   SET_USERS_LIMIT,
   SET_USERS_PAGE,
+  SET_USERS_PARAMS,
   SET_USERS_SEARCH,
   SET_USERS_STATUS,
 } from './types';
@@ -26,6 +27,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         search: action.payload.search,
+      };
+    case SET_USERS_PARAMS:
+      return {
+        ...state,
+        ...action.payload,
       };
     default:
       return state;

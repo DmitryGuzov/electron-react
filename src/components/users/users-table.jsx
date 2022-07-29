@@ -89,7 +89,7 @@ const UsersTable = (props) => {
         </Tbody>
         <Tfoot>
           <Tr>
-            <Th colSpan={14} textAlign='center'>
+            <Th colSpan={15} textAlign='center'>
               {!props.users || (props.users?.length === 0 && 'Не знайдено')}
               {props.loading && (
                 <Box

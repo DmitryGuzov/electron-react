@@ -4,8 +4,10 @@ import {
   AddServiceRoute,
   CarRoute,
   CarsRoute,
+  EventsRoute,
   ForgotPasswordRoute,
   HomeRoute,
+  InvoicesRoute,
   ServiceRoute,
   ServicesRoute,
   SettingsRoute,
@@ -27,6 +29,8 @@ import {
   ServicePage,
   SettingsPage,
   AddServicePage,
+  EventsPage,
+  InvoicesPage,
 } from '../pages';
 
 const AppRoutes = (props) => {
@@ -43,6 +47,8 @@ const AppRoutes = (props) => {
         <Route path={ServiceRoute.template} element={<ServicePage />} />
         <Route path={AddServiceRoute} element={<AddServicePage />} />
         <Route path={UserRoute.template} element={<UserPage />} />
+        <Route path={EventsRoute} element={<EventsPage />} />
+        <Route path={InvoicesRoute} element={<InvoicesPage />} />
         <Route path={SettingsRoute} element={<SettingsPage />} />
         <Route path={ForgotPasswordRoute} element={<ForgotPasswordPage />} />
         <Route path={HomeRoute} element={<HomePage />} />

@@ -2,6 +2,7 @@ import {
   GET_CUSTOMERS,
   SET_USERS_LIMIT,
   SET_USERS_PAGE,
+  SET_USERS_PARAMS,
   SET_USERS_SEARCH,
   SET_USERS_STATUS,
 } from './types';
@@ -28,5 +29,9 @@ export const setUsersLimitAction = (payload) => ({
 
 export const setUsersSearchAction = (payload) => ({
   type: SET_USERS_SEARCH,
+  payload: payload,
+});
+export const setUsersParamsAction = (payload) => ({
+  type: SET_USERS_PARAMS,
   payload: payload,
 });

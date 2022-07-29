@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../app/App.css';
 import { getUsersStoreSelector } from '../store/users/selectors';
@@ -18,7 +18,14 @@ import {
   Input,
   InputRightElement,
   IconButton,
+  Button,
+  ButtonGroup,
+  Wrap,
+  WrapItem,
+  Checkbox,
+  CheckboxGroup,
 } from '@chakra-ui/react';
+import UsersFilters from '../components/users/user-filters';
 
 const UsersContainer = (props) => {
   const navigate = useNavigate();
@@ -47,30 +54,38 @@ const UsersContainer = (props) => {
     dispatch(setUsersSearchAction({ search: searchString }));
   };
 
+  const pageCount = useMemo(() => {
+    if (total && limit) {
+      return Math.ceil(total / limit);
+    } else {
+      return 1;
+    }
+  }, [total, limit]);
+
+  useEffect(() => {
+    if (page > pageCount) {
+      navigate('/users?page=1');
+    }
+  }, [page, pageCount, navigate]);
+
   useEffect(() => {
     dispatch(getUsersThunk(page, limit, search, filters));
-  }, [dispatch, page, navigate, total, limit, search, filters]);
+  }, [dispatch, page, navigate, limit, search, filters]);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    console.log(params);
     const pageParam = parseInt(params.get('page'));
     const searchValue = String(params.get('search'));
-    // if (searchValue) {
-    //   dispatch(setUsersSearchAction({ search: searchValue }));
-    // }
+
     if (pageParam) {
       dispatch(setUsersPageAction({ page: pageParam }));
     }
-    //  else {
-    //   dispatch(setUsersPageAction({ page: 1 }));
-    // }
   }, [location.search, dispatch]);
 
   return (
     <div className='App'>
       <h2>Users page</h2>
-      <Box>
+      <Wrap>
         <Box width={300}>
           <InputGroup size='md'>
             <Input
@@ -97,7 +112,8 @@ const UsersContainer = (props) => {
             </InputRightElement>
           </InputGroup>
         </Box>
-      </Box>
+      </Wrap>
+      <UsersFilters />
       <Box overflowX={'auto'} margin='20px 0 20px 0'>
         <UsersTable
           loading={loading}

@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { CarRoute } from '../../config/routes';
 import { useDispatch } from 'react-redux';
 import { getCarAction } from '../../store/cars/actions';
+import { BsImage } from 'react-icons/bs';
 
 const CarsTable = (props) => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const CarsTable = (props) => {
         <Thead>
           <Tr>
             <Th>Avatar</Th>
-            <Th>Id</Th>
+            {/* <Th>Id</Th> */}
             <Th>Brand</Th>
             <Th>Model</Th>
             <Th textAlign={'center'}>Number</Th>
@@ -61,17 +62,16 @@ const CarsTable = (props) => {
                       borderRadius={'2px'}
                       width='50px'
                       loading='lazy'
-                      src={
-                        car.img.length > 0
-                          ? car.img
-                          : 'https://bit.ly/sage-adebayo'
-                      }
+                      src={car?.img}
+                      icon={<BsImage fontSize='20px' />}
                     ></Avatar>
                   </Td>
-                  <Td>{car.id}</Td>
+                  {/* <Td>{car.id}</Td> */}
                   <Td>{car.brand}</Td>
                   <Td>{car.model}</Td>
-                  <Td textAlign={'center'}>{car.number ?? ' - '}</Td>
+                  <Td textAlign={'center'}>
+                    {car.registrationNumber ?? ' - '}
+                  </Td>
                   <Td textAlign={'center'}>{car.price}</Td>
                   <Td textAlign={'center'}>{car.createdAt}</Td>
                 </Tr>

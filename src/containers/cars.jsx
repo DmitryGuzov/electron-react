@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../app/App.css';
-import { Box } from '@chakra-ui/react';
+import { Box, Flex, Button } from '@chakra-ui/react';
 import { getCarsStoreSelector } from '../store/cars/selectors';
 import getCarsThunk from '../store/cars/thunk/get-cars';
 import CarsTable from '../components/cars/cars-table';
@@ -21,13 +21,22 @@ const CarsContainer = (props) => {
     navigate(`/services?page=${page}`);
   };
 
+  const handleAddCarPage = () => {
+    navigate('/cars/add');
+  };
+
   useEffect(() => {
     dispatch(getCarsThunk(page, limit, search, filters));
   }, [dispatch, page, limit, search, filters]);
   return (
     <div className='App'>
       <h2>Cars page</h2>
-
+      <Flex justifyContent='space-between' alignItems='center' px={'10px'}>
+        <Box width={300}></Box>
+        <Button size='sm' onClick={handleAddCarPage}>
+          Add Car
+        </Button>
+      </Flex>
       <Box overflowX={'auto'} margin='20px 0 20px 0'>
         <CarsTable
           loading={loading}
@@ -42,7 +51,6 @@ const CarsContainer = (props) => {
           total={total}
           size={limit}
           onChangePage={handleChangePage}
-          // onChangeLimit={handleChangeLimit}
         />
       </Box>
     </div>

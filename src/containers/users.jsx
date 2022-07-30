@@ -24,6 +24,7 @@ import {
   WrapItem,
   Checkbox,
   CheckboxGroup,
+  Flex,
 } from '@chakra-ui/react';
 import UsersFilters from '../components/users/user-filters';
 
@@ -52,6 +53,9 @@ const UsersContainer = (props) => {
 
   const handleSubmitSearch = () => {
     dispatch(setUsersSearchAction({ search: searchString }));
+  };
+  const handleAddServicePage = () => {
+    navigate('/users/add');
   };
 
   const pageCount = useMemo(() => {
@@ -85,18 +89,17 @@ const UsersContainer = (props) => {
   return (
     <div className='App'>
       <h2>Users page</h2>
-      <Wrap>
+      <Flex justifyContent='space-between' alignItems='center' px={'10px'}>
         <Box width={300}>
           <InputGroup size='md'>
             <Input
               pr='4.5rem'
               type={'text'}
               placeholder='Поиск'
-              value={searchString}
               onChange={handleChangeSearch}
               onKeyUp={(event) => {
                 if (event.key === 'Enter') {
-                  handleSubmitSearch();
+                  // handleSubmitSearch();
                 }
               }}
             />
@@ -106,13 +109,16 @@ const UsersContainer = (props) => {
                 size={'md'}
                 icon={<FiSearch />}
                 onClick={() => {
-                  handleSubmitSearch();
+                  // handleSubmitSearch();
                 }}
               />
             </InputRightElement>
           </InputGroup>
         </Box>
-      </Wrap>
+        <Button size='sm' onClick={handleAddServicePage}>
+          Add User
+        </Button>
+      </Flex>
       <UsersFilters />
       <Box overflowX={'auto'} margin='20px 0 20px 0'>
         <UsersTable

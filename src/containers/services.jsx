@@ -36,17 +36,11 @@ const ServicesContainer = (props) => {
   const handleChangeLimit = (value) => {
     dispatch(changeServicesSearchParamsAction({ limit: value }));
   };
-  const handleChangeSearch = (event) => {
-    // setSearchString(event.target.value);
-  };
+  const handleChangeSearch = (event) => {};
 
   const handleAddServicePage = () => {
     navigate(AddServiceRoute);
   };
-
-  // const handleSubmitSearch = () => {
-  //   dispatch(changeServicesSearchParamsAction({ search: searchString }));
-  // };
 
   useEffect(() => {
     dispatch(getServicesThunk(page, limit, search, filters));

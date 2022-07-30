@@ -16,6 +16,8 @@ import EditServicePage from './edit-service';
 import SettingsPage from './settings';
 import InvoicesPage from './invoices';
 import EventsPage from './events';
+import AddUserPage from './add-user';
+
 export {
   SignInPage,
   SignUpPage,
@@ -34,4 +36,5 @@ export {
   SettingsPage,
   InvoicesPage,
   EventsPage,
+  AddUserPage,
 };

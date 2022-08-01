@@ -30,9 +30,10 @@ const ServicesTable = (props) => {
             <Th>Title</Th>
             <Th textAlign={'center'}>Location</Th>
             <Th textAlign={'center'}>Price</Th>
-            <Th textAlign={'center'}>Reminder</Th>
-            <Th textAlign={'center'}>Reminder finished</Th>
+            <Th textAlign={'center'}>Type</Th>
+            <Th textAlign={'center'}>Done</Th>
             <Th textAlign={'center'}>Remind at</Th>
+            <Th textAlign={'center'}>Car</Th>
             <Th textAlign={'center'}>Created at</Th>
           </Tr>
         </Thead>
@@ -59,25 +60,26 @@ const ServicesTable = (props) => {
                   )}
                   <Td textAlign={'center'}>{service.price}</Td>
                   <Td textAlign={'center'}>
-                    {service.isReminder ? (
+                    {service.serviceType ? (
+                      <Badge colorScheme={'green'}>{service.serviceType}</Badge>
+                    ) : (
+                      <Badge colorScheme={'pink'}>{' - '}</Badge>
+                    )}
+                  </Td>
+                  <Td textAlign={'center'}>
+                    {service.isDone ? (
                       <Badge colorScheme={'green'}>Yes</Badge>
                     ) : (
                       <Badge colorScheme={'pink'}>No</Badge>
                     )}
                   </Td>
                   <Td textAlign={'center'}>
-                    {service.isReminder ? (
-                      service.isReminderFinished ? (
-                        <Badge colorScheme={'green'}>Yes</Badge>
-                      ) : (
-                        <Badge colorScheme={'pink'}>No</Badge>
-                      )
-                    ) : (
-                      ' - '
-                    )}
+                    {service.serviceType === 'REMINDER'
+                      ? service.remindAt ?? ' - '
+                      : ' - '}
                   </Td>
                   <Td textAlign={'center'}>
-                    {service.isReminder ? service.remindAt ?? ' - ' : ' - '}
+                    {service.car.brand} {service.car.model}
                   </Td>
                   <Td textAlign={'center'}>{service.createdAt}</Td>
                 </Tr>

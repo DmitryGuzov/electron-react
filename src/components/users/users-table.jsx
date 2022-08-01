@@ -59,11 +59,7 @@ const UsersTable = (props) => {
                   }}
                 >
                   <Td>
-                    <Avatar
-                      size='sm'
-                      loading='lazy'
-                      src={user.img ?? 'https://bit.ly/sage-adebayo'}
-                    ></Avatar>
+                    <Avatar size='sm' loading='lazy' src={user.img}></Avatar>
                   </Td>
                   <Td>{user.id}</Td>
                   <Td>{user.role}</Td>

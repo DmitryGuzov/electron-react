@@ -1,12 +1,27 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import ServiceDetails from '../components/service/service-details';
 import Navbar from '../components/navbar';
+import { useNavigate } from 'react-router-dom';
 
-function ServiceContainer() {
+function ServiceContainer(props) {
+  const navigate = useNavigate();
   return (
-    <Box padding={'10px'}>
-      <Navbar />
+    <Box>
+      <Navbar>
+        <Button
+          size='sm'
+          m='2px 2px 2px 0'
+          onClick={() => {
+            navigate(`/services/asdasdasd/edit`);
+          }}
+        >
+          Edit
+        </Button>
+        <Button size='sm' m='2px 2px 2px 0' onClick={() => {}}>
+          Delete
+        </Button>
+      </Navbar>
       <ServiceDetails />
     </Box>
   );

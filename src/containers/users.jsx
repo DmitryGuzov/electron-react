@@ -19,11 +19,6 @@ import {
   InputRightElement,
   IconButton,
   Button,
-  ButtonGroup,
-  Wrap,
-  WrapItem,
-  Checkbox,
-  CheckboxGroup,
   Flex,
 } from '@chakra-ui/react';
 import UsersFilters from '../components/users/user-filters';
@@ -36,7 +31,6 @@ const UsersContainer = (props) => {
   const { page, limit, search, users, status, total, filters } = useSelector(
     getUsersStoreSelector
   );
-  console.log(location);
   console.log(page);
   const loading = status === 'running';
 

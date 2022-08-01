@@ -1,4 +1,5 @@
 import './App.css';
+import '../assets/styles/global.css';
 import { Provider } from 'react-redux';
 import { rootStore } from '../store/store';
 

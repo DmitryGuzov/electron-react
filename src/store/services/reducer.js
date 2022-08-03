@@ -1,5 +1,6 @@
 import {
   CHANGE_SERVICES_SEARCH_PARAMS,
+  DELETE_SERVICE,
   GET_SERVICE,
   GET_SERVICES,
   SET_SERVICES_STATUS,
@@ -16,6 +17,10 @@ const servicesReducer = (state = initialState, action) => {
       return { ...state, service: action.service };
     case CHANGE_SERVICES_SEARCH_PARAMS:
       return { ...state, ...action.payload };
+      case DELETE_SERVICE: 
+      return {
+        ...state, 
+      }
     default:
       return state;
   }

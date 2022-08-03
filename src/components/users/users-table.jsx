@@ -12,9 +12,16 @@ import {
   Spinner,
   Avatar,
   AvatarBadge,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { UserRoute } from '../../config/routes';
+import { BiTrashAlt } from 'react-icons/bi';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 const UsersTable = (props) => {
   const navigate = useNavigate();
@@ -42,6 +49,7 @@ const UsersTable = (props) => {
             <Th>next Renewal Date</Th>
             <Th textAlign={'center'}>total Paid</Th>
             <Th textAlign={'center'}>Created at</Th>
+            <Th>Actions</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -79,6 +87,30 @@ const UsersTable = (props) => {
                   <Td textAlign='center'>{user.nextRenewalDate ?? ' - '}</Td>
                   <Td textAlign='center'>{user.totalPaid}</Td>
                   <Td textAlign='center'>{user.createdAt}</Td>
+                  <Td>
+                    <Menu>
+                      <MenuButton
+                        isActive={false}
+                        as={IconButton}
+                        aria-label='Options'
+                        icon={<BsThreeDotsVertical />}
+                        variant='outline'
+                        onClick={(event) => {
+                          event.stopPropagation();
+                        }}
+                      />
+                      <MenuList>
+                        <MenuItem
+                          icon={<BiTrashAlt />}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                          }}
+                        >
+                          Удалить
+                        </MenuItem>
+                      </MenuList>
+                    </Menu>
+                  </Td>
                 </Tr>
               );
             })}

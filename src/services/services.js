@@ -26,6 +26,13 @@ class ServicesService {
       {}
     );
   };
+  deleteService = async (serviceId) => {
+    const userId = '0e6867ee-1bc8-460e-951c-b9639337b489';
+    return await axiosInstance.delete(
+      `http://localhost:8080/api/users/${userId}/services/${serviceId}`,
+      {}
+    );
+  };
 }
 
 export default new ServicesService();

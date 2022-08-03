@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Button, Flex } from '@chakra-ui/react';
+import { Box, Button, Flex, IconButton } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import { IoIosArrowBack } from 'react-icons/io';
 
 const Navbar = (props) => {
   const navigate = useNavigate();
@@ -9,12 +10,12 @@ const Navbar = (props) => {
     navigate(-1);
   };
   return (
-    <Box padding={2} borderRadius={5} backgroundColor='#21252b'>
+    <Box padding={2} borderRadius={5}>
       <Flex justifyContent='space-between' alignItems='center' flexWrap='wrap'>
         <Box>
-          <Button onClick={handleBack} size={'sm'}>
-            Back
-          </Button>
+          <IconButton onClick={handleBack} size={'sm'}>
+            <IoIosArrowBack />
+          </IconButton>
         </Box>
         <Box>
           <Flex

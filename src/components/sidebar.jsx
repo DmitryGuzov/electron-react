@@ -9,7 +9,9 @@ import { MdMiscellaneousServices } from 'react-icons/md';
 import { AiOutlineNotification } from 'react-icons/ai';
 import { FaFileInvoiceDollar } from 'react-icons/fa';
 import Alert from './alert';
-import { useDisclosure } from '@chakra-ui/react';
+import { useDisclosure, useColorMode, IconButton } from '@chakra-ui/react';
+import { HiOutlineMoon } from 'react-icons/hi';
+import { BsSun } from 'react-icons/bs';
 
 import Tooltip from './tooltip';
 import {
@@ -62,6 +64,7 @@ const list = [
 ];
 
 const Sidebar = (props) => {
+  const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -73,13 +76,23 @@ const Sidebar = (props) => {
               <SidebarItem
                 key={index}
                 item={item}
-                isActive={index === 1}
                 onExit={() => {
                   onOpen();
                 }}
               />
             );
           })}
+          <IconButton
+            onClick={toggleColorMode}
+            size='sm'
+            backgroundColor='#2d2e30'
+          >
+            {colorMode === 'light' ? (
+              <HiOutlineMoon color={'red'} />
+            ) : (
+              <BsSun color={'red'} />
+            )}
+          </IconButton>
         </ul>
       </div>
       <Alert
@@ -105,7 +118,7 @@ const SidebarItem = (props) => {
 
   return (
     <li
-      className={props.isActive ? 'item active' : `item`}
+      className={isCurrentLocation ? 'item active' : `item`}
       onClick={() => {
         if (props.item.path === SignInRoute) {
           props.onExit();
@@ -115,7 +128,13 @@ const SidebarItem = (props) => {
       }}
     >
       <Tooltip content={props.item.title} direction='right'>
-        <p>{<props.item.icon color={isCurrentLocation ? 'white' : 'red'} />}</p>
+        <IconButton
+          size='sm'
+          backgroundColor='#2d2e30'
+        >
+          {<props.item.icon color={'red'} />}
+        </IconButton>
+        {/* <p>{<props.item.icon color={isCurrentLocation ? 'white' : 'red'} />}</p> */}
       </Tooltip>
     </li>
   );

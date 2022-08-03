@@ -82,7 +82,7 @@ const ServicesContainer = (props) => {
             <InputRightElement width='2.5rem'>
               <IconButton
                 aria-label='Add to friends'
-                size={'md'}
+                size={'sm'}
                 icon={<FiSearch />}
                 onClick={() => {
                   // handleSubmitSearch();

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../app/App.css';
-import { Box } from '@chakra-ui/react';
+import { Box, Select } from '@chakra-ui/react';
 import { getServicesStoreSelector } from '../store/services/selectors';
 import getServicesThunk from '../store/services/thunk/get-services';
 import ServicesTable from '../components/services/services-table';
@@ -90,6 +90,52 @@ const ServicesContainer = (props) => {
               />
             </InputRightElement>
           </InputGroup>
+        </Box>
+        <Box w={250}>
+          <Select
+            defaultValue='none'
+            variant='filled'
+            placeholder='None'
+            onChange={(event) => {
+              console.log(event.target);
+            }}
+          >
+            <option value='asdasd' selected>
+              Selected
+            </option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+            <option value='asdasd'>asdasd</option>
+          </Select>
         </Box>
         <Button size='sm' onClick={handleAddServicePage}>
           Add Service

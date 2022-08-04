@@ -1,8 +1,13 @@
-import { GET_CAR, GET_CARS, SET_CARS_STATUS } from './types';
+import { GET_CAR, GET_CARS, GET_CARS_LIST, SET_CARS_STATUS } from './types';
 
 export const getCarsAction = (data) => ({
   type: GET_CARS,
   payload: data,
+});
+
+export const getCarsListAction = (payload) => ({
+  type: GET_CARS_LIST,
+  payload: payload,
 });
 
 export const getCarAction = (data) => ({

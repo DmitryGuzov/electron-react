@@ -56,7 +56,7 @@ function CarContainer() {
         </Button>
       </Navbar>
       {loading && <Loading />}
-      {car && !loading && <CarDetails car={car} />}
+      {!loading && car && <CarDetails car={car} />}
       <Alert
         title='Exit?'
         isOpen={isOpen}

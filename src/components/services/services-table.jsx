@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { ServiceRoute } from '../../config/routes';
+import moment from 'moment';
 
 const ServicesTable = (props) => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const ServicesTable = (props) => {
             <Th textAlign={'center'}>Done</Th>
             <Th textAlign={'center'}>Remind at</Th>
             <Th textAlign={'center'}>Car</Th>
+            <Th textAlign={'center'}>Date</Th>
             <Th textAlign={'center'}>Created at</Th>
           </Tr>
         </Thead>
@@ -61,9 +63,9 @@ const ServicesTable = (props) => {
                   <Td textAlign={'center'}>{service.price}</Td>
                   <Td textAlign={'center'}>
                     {service.serviceType ? (
-                      <Badge colorScheme={'green'}>{service.serviceType}</Badge>
+                      <Badge colorScheme={'blue'}>{service.serviceType}</Badge>
                     ) : (
-                      <Badge colorScheme={'pink'}>{' - '}</Badge>
+                      ' - '
                     )}
                   </Td>
                   <Td textAlign={'center'}>
@@ -75,13 +77,20 @@ const ServicesTable = (props) => {
                   </Td>
                   <Td textAlign={'center'}>
                     {service.serviceType === 'REMINDER'
-                      ? service.remindAt ?? ' - '
+                      ? service.remindAt
+                        ? moment(service.remindAt).format('DD-MM-YYYY, THH:MM')
+                        : ' - '
                       : ' - '}
                   </Td>
-                  <Td textAlign={'center'}>
+                  <Td>
                     {service.car.brand} {service.car.model}
                   </Td>
-                  <Td textAlign={'center'}>{service.createdAt}</Td>
+                  <Td textAlign={'center'}>
+                    {moment(service.date).format('DD-MM-YYYY, THH:MM')}
+                  </Td>
+                  <Td textAlign={'center'}>
+                    {moment(service.createdAt).format('DD-MM-YYYY, THH:MM')}
+                  </Td>
                 </Tr>
               );
             })}

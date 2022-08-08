@@ -37,9 +37,8 @@ const CarDetails = ({ car }) => {
         spacing={{ base: 8, md: 10 }}
         py={{ base: 18, md: 24 }}
       >
-        <Flex>
+        <Flex flexDirection='column'>
           <Avatar
-            // rounded={'md'}
             borderRadius={'5px'}
             alt={'product image'}
             src={car?.img}
@@ -50,6 +49,56 @@ const CarDetails = ({ car }) => {
             loading='lazy'
             h={{ base: '100%', sm: '300px', lg: '400px' }}
           />
+          <br />
+          {car?.consumables.length && (
+            <Box mb={5}>
+              <Text
+                fontSize={{ base: '16px', lg: '18px' }}
+                fontWeight={'500'}
+                textTransform={'uppercase'}
+                mb={'4'}
+              >
+                Расходники
+              </Text>
+
+              <Wrap spacing={2}>
+                {car?.consumables.map((breakdown) => {
+                  return (
+                    <WrapItem key={breakdown.id}>
+                      <Badge variant='solid' colorScheme='teal'>
+                        {breakdown.title}
+                        {': '} {breakdown.value}
+                      </Badge>
+                    </WrapItem>
+                  );
+                })}
+              </Wrap>
+            </Box>
+          )}
+          {car?.breakdowns.length > 0 && (
+            <Box mb={5}>
+              <Text
+                fontSize={{ base: '16px', lg: '18px' }}
+                fontWeight={'500'}
+                textTransform={'uppercase'}
+                mb={'4'}
+              >
+                Поломки
+              </Text>
+
+              <Wrap spacing={2}>
+                {car?.breakdowns.map((breakdown) => {
+                  return (
+                    <WrapItem key={breakdown.id}>
+                      <Badge variant='solid' colorScheme='red'>
+                        {breakdown.title}
+                      </Badge>
+                    </WrapItem>
+                  );
+                })}
+              </Wrap>
+            </Box>
+          )}
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
           <Box as={'header'}>

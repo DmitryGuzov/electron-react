@@ -18,6 +18,7 @@ import { CarRoute } from '../../config/routes';
 import { useDispatch } from 'react-redux';
 import { getCarAction } from '../../store/cars/actions';
 import { BsImage } from 'react-icons/bs';
+import moment from 'moment';
 
 const CarsTable = (props) => {
   const dispatch = useDispatch();
@@ -73,7 +74,10 @@ const CarsTable = (props) => {
                     {car.registrationNumber ?? ' - '}
                   </Td>
                   <Td textAlign={'center'}>{car.price}</Td>
-                  <Td textAlign={'center'}>{car.createdAt}</Td>
+                  <Td textAlign={'center'}>
+                    {' '}
+                    {moment(car.createdAt).format('DD-MM-YYYY, THH:MM')}
+                  </Td>
                 </Tr>
               );
             })}

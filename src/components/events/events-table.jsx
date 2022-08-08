@@ -13,6 +13,7 @@ import {
 import Loading from '../../components/loading';
 import { useNavigate } from 'react-router-dom';
 import { ServiceRoute } from '../../config/routes';
+import moment from 'moment';
 
 const EventsTable = (props) => {
   const navigate = useNavigate();
@@ -45,7 +46,9 @@ const EventsTable = (props) => {
                 >
                   <Td>{event.code}</Td>
                   <Td textAlign={'center'}>{event.code + '-title'}</Td>
-                  <Td textAlign={'center'}>{event.createdAt}</Td>
+                  <Td textAlign={'center'}>
+                    {moment(event.createdAt).format('DD-MM-YYYY, THH:MM')}
+                  </Td>
                 </Tr>
               );
             })}

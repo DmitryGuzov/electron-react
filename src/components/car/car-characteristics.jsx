@@ -1,38 +1,8 @@
 import React from 'react';
-import {
-  Badge,
-  Wrap,
-  WrapItem,
-  ListItem,
-  Text,
-  List,
-  useColorModeValue,
-  Box,
-} from '@chakra-ui/react';
+import { ListItem, Text, List, useColorModeValue, Box } from '@chakra-ui/react';
 const CarCharacteristics = (props) => {
   return (
     <>
-      <Box mb={5}>
-        <Text
-          fontSize={{ base: '16px', lg: '18px' }}
-          color={useColorModeValue('yellow.500', 'yellow.300')}
-          fontWeight={'500'}
-          textTransform={'uppercase'}
-          mb={'4'}
-        >
-          Характеристики
-        </Text>
-
-        <Wrap spacing={2}>
-          {props.characteristics.power ? (
-            <WrapItem>
-              <Badge variant='solid' colorScheme='green'>
-                New
-              </Badge>
-            </WrapItem>
-          ) : null}
-        </Wrap>
-      </Box>
       <Box>
         <Text
           fontSize={{ base: '16px', lg: '18px' }}

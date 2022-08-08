@@ -22,6 +22,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserRoute } from '../../config/routes';
 import { BiTrashAlt } from 'react-icons/bi';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import moment from 'moment';
 
 const UsersTable = (props) => {
   const navigate = useNavigate();
@@ -83,10 +84,24 @@ const UsersTable = (props) => {
                   <Td textAlign='center'>
                     {user.isSubscribed ? 'Active' : 'Disactive'}
                   </Td>
-                  <Td textAlign='center'>{user.lastRenewalDate ?? ' - '}</Td>
-                  <Td textAlign='center'>{user.nextRenewalDate ?? ' - '}</Td>
+                  <Td textAlign='center'>
+                    {user.lastRenewalDate
+                      ? moment(user.lastRenewalDate).format(
+                          'DD-MM-YYYY, THH:MM'
+                        )
+                      : ' - '}
+                  </Td>
+                  <Td textAlign='center'>
+                    {user.nextRenewalDate
+                      ? moment(user.nextRenewalDate).format(
+                          'DD-MM-YYYY, THH:MM'
+                        )
+                      : ' - '}
+                  </Td>
                   <Td textAlign='center'>{user.totalPaid}</Td>
-                  <Td textAlign='center'>{user.createdAt}</Td>
+                  <Td textAlign='center'>
+                    {moment(user.createdAt).format('DD-MM-YYYY, THH:MM')}
+                  </Td>
                   <Td>
                     <Menu>
                       <MenuButton

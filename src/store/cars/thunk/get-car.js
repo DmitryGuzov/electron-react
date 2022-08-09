@@ -14,6 +14,7 @@ const getCarThunk = (carId) => {
         }, 1000);
       });
       if (response.status === 200 || response.status === 201) {
+        console.log(response.data.car);
         dispatch(setCarsStatus('success'));
         dispatch(
           getCarAction({

@@ -25,7 +25,6 @@ const CarsTable = (props) => {
   const navigate = useNavigate();
 
   const handleNavigate = (car) => {
-    dispatch(getCarAction({ car: car }));
     navigate(CarRoute.format(car.id));
   };
 

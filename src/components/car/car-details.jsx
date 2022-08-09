@@ -50,7 +50,7 @@ const CarDetails = ({ car }) => {
             h={{ base: '100%', sm: '300px', lg: '400px' }}
           />
           <br />
-          {car?.consumables.length && (
+          {car?.consumables.length > 0 && (
             <Box mb={5}>
               <Text
                 fontSize={{ base: '16px', lg: '18px' }}

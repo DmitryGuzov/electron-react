@@ -20,7 +20,6 @@ const getServicesThunk = (page, limit, search, filters) => {
       });
       if (response.status === 200 || response.status === 201) {
         dispatch(setServicesStatus('success'));
-        console.log('response: ', response);
         dispatch(
           getServicesAction({
             services: response.data.services,

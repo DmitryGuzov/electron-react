@@ -10,7 +10,6 @@ const deleteServiceThunk = (serviceId, navigate) => {
 
       if (response.status === 200) {
         dispatch(setServicesStatus('success'));
-        console.log('response: ', response);
         navigate(-1);
       }
     } catch (error) {

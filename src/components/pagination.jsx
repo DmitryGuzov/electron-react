@@ -10,7 +10,7 @@ import { BiDotsHorizontalRounded } from 'react-icons/bi';
 
 const DotsItem = () => {
   return (
-    <Box w='40px' h='40px' display={'flex'} alignItems={'flex-end'}>
+    <Box w='32px' h='32px' display={'flex'} alignItems={'flex-end'}>
       <BiDotsHorizontalRounded />
     </Box>
   );
@@ -63,8 +63,8 @@ const Pagination = ({
       alignItems={'center'}
       flexWrap={'wrap'}
     >
-      <Box width={'100px'}>
-        <Select defaultValue={size} onChange={handleChangeLimit}>
+      <Box width={'80px'} mr='10px'>
+        <Select defaultValue={size} onChange={handleChangeLimit} size='sm'>
           <option value={10}>10</option>
           <option value={20}>20</option>
           <option value={50}>50</option>
@@ -73,14 +73,15 @@ const Pagination = ({
       </Box>
       <HStack spacing='10px'>
         <IconButton
+          size='sm'
           aria-label='prev page button'
           icon={<MdOutlineKeyboardArrowLeft />}
           disabled={page === 1 || disabled}
           onClick={handlePrevPage}
         />
         <Button
-          w='40px'
           bg='pink.100'
+          size='sm'
           backgroundColor={page === 1 ? '#0bc5ea' : 'transparent'}
           _hover={{
             backgroundColor: '#0bc5ea',
@@ -96,8 +97,8 @@ const Pagination = ({
 
         {page === pageCount && pageCount > 3 && (
           <Button
-            w='40px'
             bg='pink.100'
+            size='sm'
             backgroundColor={page === 1 ? '#0bc5ea' : 'transparent'}
             _hover={{
               backgroundColor: '#0bc5ea',
@@ -110,8 +111,8 @@ const Pagination = ({
         )}
         {page > 2 && (
           <Button
-            w='40px'
             bg='pink.100'
+            size='sm'
             backgroundColor={page === page - 1 ? '#0bc5ea' : 'transparent'}
             _hover={{
               backgroundColor: '#0bc5ea',
@@ -124,8 +125,8 @@ const Pagination = ({
         )}
         {page !== 1 && page !== pageCount && (
           <Button
-            w='40px'
             bg='pink.100'
+            size='sm'
             backgroundColor={page === page ? '#0bc5ea' : 'transparent'}
             _hover={{
               backgroundColor: '#0bc5ea',
@@ -138,8 +139,8 @@ const Pagination = ({
         )}
         {page < pageCount - 1 && (
           <Button
-            w='40px'
             bg='pink.100'
+            size='sm'
             backgroundColor={page === page + 1 ? '#0bc5ea' : 'transparent'}
             _hover={{
               backgroundColor: '#0bc5ea',
@@ -152,8 +153,8 @@ const Pagination = ({
         )}
         {page === 1 && pageCount > 3 && (
           <Button
-            w='40px'
             bg='pink.100'
+            size='sm'
             backgroundColor={page === page + 2 ? '#0bc5ea' : 'transparent'}
             _hover={{
               backgroundColor: '#0bc5ea',
@@ -167,8 +168,8 @@ const Pagination = ({
         {page < pageCount - 2 && <DotsItem />}
         {pageCount !== 1 && (
           <Button
-            w='40px'
             bg='pink.100'
+            size='sm'
             backgroundColor={page === pageCount ? '#0bc5ea' : 'transparent'}
             _hover={{
               backgroundColor: '#0bc5ea',
@@ -180,6 +181,7 @@ const Pagination = ({
           </Button>
         )}
         <IconButton
+          size='sm'
           aria-label='next page button'
           icon={<MdOutlineKeyboardArrowRight />}
           onClick={handleNextPage}

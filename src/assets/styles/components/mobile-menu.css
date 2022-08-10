@@ -1,0 +1,30 @@
+.menu-list {
+  list-style: none;
+}
+
+.menu-list > .item {
+  display: flex;
+  align-items: center;
+  transition: 200ms ease-out;
+  border-left: 2px solid transparent;
+  margin-bottom: 5px;
+}
+
+.menu-list > .item:hover {
+  border-left: 2px solid #0bc5ea;
+  cursor: pointer;
+}
+
+.menu-list > .item.active {
+  border-left: 2px solid #0bc5ea;
+}
+
+.menu-list > .item > .icon {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 22px;
+}
+
+.menu-list > .item > .title {
+  font-size: 18px;
+}

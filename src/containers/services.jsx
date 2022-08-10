@@ -93,6 +93,7 @@ const ServicesContainer = (props) => {
         </Box>
         <Box w={250}>
           <Select
+            size='sm'
             defaultValue='none'
             variant='filled'
             placeholder='None'

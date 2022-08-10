@@ -67,8 +67,8 @@ const UsersTable = (props) => {
                     backgroundColor: '#c2c2c2',
                   }}
                 >
-                  <Td>
-                    <Avatar size='sm' loading='lazy' src={user.img}></Avatar>
+                  <Td pt="0px" pb="0px" >
+                    <Avatar size='sm' loading='lazy' src={user.img} pt="0px" pb="0px"></Avatar>
                   </Td>
                   <Td>{user.id}</Td>
                   <Td>{user.role}</Td>

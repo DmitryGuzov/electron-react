@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Tooltip, useDisclosure } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ServiceDetails from '../components/service/service-details';
 import Navbar from '../components/navbar';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -11,6 +11,8 @@ import Alert from '../components/alert';
 import ActionButtonGroup from '../components/action-button-group';
 import { HiOutlineCheck } from 'react-icons/hi';
 import { TiCancel } from 'react-icons/ti';
+import { getServicesStoreSelector } from '../store/services/selectors';
+import getServiceThunk from '../store/services/thunk/get-service';
 
 function ServiceContainer(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -19,10 +21,17 @@ function ServiceContainer(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { service } = useSelector(getServicesStoreSelector);
+
   const handleDelete = () => {
     setDeleting(true);
     dispatch(deleteServiceThunk(params.serviceId, navigate));
   };
+
+  useEffect(() => {
+    dispatch(getServiceThunk(params.serviceId));
+  }, [dispatch, params.serviceId]);
+
   return (
     <Box>
       <Navbar>
@@ -47,7 +56,7 @@ function ServiceContainer(props) {
           Удалить
         </Button>
       </Navbar>
-      <ServiceDetails />
+      <ServiceDetails service={service} />
       <ActionButtonGroup>
         <Tooltip
           hasArrow

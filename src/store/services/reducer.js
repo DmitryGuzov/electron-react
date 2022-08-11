@@ -14,7 +14,7 @@ const servicesReducer = (state = initialState, action) => {
     case SET_SERVICES_STATUS:
       return { ...state, status: action.payload };
     case GET_SERVICE:
-      return { ...state, service: action.service };
+      return { ...state, service: action.payload.service };
     case CHANGE_SERVICES_SEARCH_PARAMS:
       return { ...state, ...action.payload };
       case DELETE_SERVICE: 

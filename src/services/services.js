@@ -19,10 +19,10 @@ class ServicesService {
       {}
     );
   };
-  getService = async (carId, serviceId) => {
+  getService = async (serviceId) => {
     const userId = '0e6867ee-1bc8-460e-951c-b9639337b489';
     return await axiosInstance.get(
-      `http://localhost:8080/api/users/${userId}/cars/${carId}/services/${serviceId}`,
+      `http://localhost:8080/api/users/${userId}/services/${serviceId}`,
       {}
     );
   };
